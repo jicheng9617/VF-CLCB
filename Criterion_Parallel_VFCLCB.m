@@ -50,7 +50,7 @@ ys_lf=sqrt(ys2_lf) .* beta_yh;
 if strcmp(fi,'high')
     lcb_val = w1 * yp_hf - w2 * ys_hf;
 elseif strcmp(fi,'low')
-    lcb_val = w1 * yp_hf - w2 * ys_lf * log(cr);
+    lcb_val = w1 * yp_hf - w2 * ys_lf * (cr);
 else
     error('Inaccurate fidelity string.');
 end
@@ -76,7 +76,7 @@ for i=1:nx
     if strcmp(fi,'high')
         glcb_val(i) = abs(g_hf(i,index))-a * gs_hf(i,index);
     elseif strcmp(fi,'low')
-        glcb_val(i) = abs(g_hf(i,index))-a * gs_lf(i,index) * log(cr);
+        glcb_val(i) = abs(g_hf(i,index))-a * gs_lf(i,index) * (cr);
     else
         error('Inaccurate fidelity string.');
     end
